@@ -28,6 +28,7 @@ class RestClient(val apiKey: String) {
                 // Add the two always* required parameters to the URL
                 parameter("api_key", apiKey)
                 parameter("method", route)
+                parameter("format", "json")
 
                 // Add the user supplied settings before sending off our request
                 this.block()
