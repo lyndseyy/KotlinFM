@@ -1,0 +1,22 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.5.30'
+}
+
+group 'cc.lynzie.kotlinfm'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.30"
+    implementation "io.github.microutils:kotlin-logging:1.5.9"
+    implementation "com.google.code.gson:gson:2.8.8"
+
+    def ktorVersion = '1.6.3'
+    implementation "io.ktor:ktor-client-core:$ktorVersion"
+    implementation "io.ktor:ktor-client-json:$ktorVersion"
+    implementation "io.ktor:ktor-client-okhttp:$ktorVersion"
+    implementation "io.ktor:ktor-client-gson:$ktorVersion"
+}
