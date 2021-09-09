@@ -1,9 +1,10 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.30'
+    id 'maven-publish'
 }
 
 group 'cc.lynzie.kotlinfm'
-version '1.0-SNAPSHOT'
+version '0.0.1'
 
 repositories {
     mavenCentral()
@@ -11,7 +12,10 @@ repositories {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.5.30"
-    implementation "io.github.microutils:kotlin-logging:1.5.9"
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.2'
+    testImplementation 'org.jetbrains.kotlin:kotlin-test:1.5.30'
+
+    implementation 'io.github.microutils:kotlin-logging:2.0.11'
     implementation "com.google.code.gson:gson:2.8.8"
 
     def ktorVersion = '1.6.3'
@@ -19,4 +23,8 @@ dependencies {
     implementation "io.ktor:ktor-client-json:$ktorVersion"
     implementation "io.ktor:ktor-client-okhttp:$ktorVersion"
     implementation "io.ktor:ktor-client-gson:$ktorVersion"
+}
+
+test {
+    useJUnitPlatform()
 }
