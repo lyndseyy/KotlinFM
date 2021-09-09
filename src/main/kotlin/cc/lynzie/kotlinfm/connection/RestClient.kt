@@ -3,6 +3,8 @@ package cc.lynzie.kotlinfm.connection
 import com.google.gson.JsonObject
 import io.ktor.client.*
 import io.ktor.client.engine.okhttp.*
+import io.ktor.client.features.*
+import io.ktor.client.features.json.*
 import io.ktor.client.request.*
 import mu.KotlinLogging
 
@@ -24,7 +26,7 @@ class RestClient(val apiKey: String) {
         block: HttpRequestBuilder.() -> Unit = {}
     ): JsonObject? =
         try {
-            httpClient.get(apiBase) {
+            val json: JsonObject = httpClient.get(apiBase) {
                 // Add the two always* required parameters to the URL
                 parameter("api_key", apiKey)
                 parameter("method", route)
@@ -33,13 +35,23 @@ class RestClient(val apiKey: String) {
                 // Add the user supplied settings before sending off our request
                 this.block()
             }
+
+            json.get(json.keySet().first()).asJsonObject
         } catch (ex: Throwable) {
             logger.error(ex) { "Your request couldn't be handled correctly! Please report this back to a developer at $issuesLink!" }
             null
         }
 
     val httpClient = HttpClient(OkHttp) {
-
+        engine {
+            addNetworkInterceptor(LimitHandler())
+        }
+        install(JsonFeature) {
+            serializer = GsonSerializer()
+        }
+        install(UserAgent) {
+            agent = "KotlinFM / DEV"
+        }
     }
 
 }
