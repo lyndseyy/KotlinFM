@@ -10,9 +10,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.ktor.client.request.*
 
-class TrackAPI(val restClient: RestClient) {
+class TrackAPI(private val restClient: RestClient) {
 
-    val gson = GsonBuilder()
+    private val gson: Gson = GsonBuilder()
         .registerTypeAdapter(FMTrackSearch::class.java, TrackSearchDeserializer())
         .create()
 

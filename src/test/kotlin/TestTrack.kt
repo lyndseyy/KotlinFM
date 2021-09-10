@@ -4,7 +4,7 @@ import kotlin.test.assertEquals
 import org.junit.jupiter.api.Test
 
 internal class TestTrack {
-    val kotlinFM = KotlinFM(System.getenv("KotlinFMKey"))
+    private val kotlinFM = KotlinFM(System.getenv("KotlinFMKey"))
 
     @Test
     fun testTrackInfo() = runBlocking {
