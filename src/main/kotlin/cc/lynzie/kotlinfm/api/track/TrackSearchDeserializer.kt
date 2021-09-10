@@ -17,7 +17,6 @@ class TrackSearchDeserializer : JsonDeserializer<FMTrackSearch> {
         return json?.let {
             val jsonObj = json.asJsonObject
 
-            println(jsonObj)
             // Move trackMatches.track up to tracks in the root obj.
             jsonObj.add("tracks", jsonObj.get("trackmatches").asJsonObject.get("track").asJsonArray)
             jsonObj.remove("trackMatches")

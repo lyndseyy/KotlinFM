@@ -34,7 +34,6 @@ class RestClient(val apiKey: String) {
 
                 // Add the user supplied settings before sending off our request
                 this.block()
-                println(url.buildString())
             }
 
             json.get(json.keySet().first()).asJsonObject
