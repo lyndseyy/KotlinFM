@@ -1,4 +1,4 @@
-package cc.lynzie.kotlinfm.api
+package cc.lynzie.kotlinfm.api.track
 
 import cc.lynzie.kotlinfm.api.track.TrackSearchDeserializer
 import cc.lynzie.kotlinfm.connection.RestClient

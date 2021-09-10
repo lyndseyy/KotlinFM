@@ -1,9 +1,9 @@
 package cc.lynzie.kotlinfm
 
-import cc.lynzie.kotlinfm.api.TrackAPI
+import cc.lynzie.kotlinfm.api.track.TrackAPI
 import cc.lynzie.kotlinfm.connection.RestClient
 
-class KotlinFM(private val apiKey: String) {
+class KotlinFM(apiKey: String) {
 
     private val restClient = RestClient(apiKey)
 
